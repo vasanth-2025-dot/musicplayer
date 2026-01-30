@@ -1,0 +1,76 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #121212;
+  color: white;
+}
+
+.player {
+  max-width: 360px;
+  margin: 20px auto;
+  background: #181818;
+  padding: 20px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.player img {
+  width: 100%;
+  border-radius: 16px;
+}
+
+.progress-container {
+  background: #333;
+  height: 6px;
+  border-radius: 10px;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+#progress {
+  background: #1db954;
+  height: 100%;
+  width: 0%;
+}
+
+.time {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.controls button,
+.extras button {
+  background: #1db954;
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  margin: 5px;
+  font-size: 18px;
+}
+
+.playlist {
+  max-width: 360px;
+  margin: auto;
+}
+
+.song {
+  padding: 10px;
+  border-bottom: 1px solid #333;
+  cursor: pointer;
+}
+
+.song:hover {
+  background: #222;
+}
+
+@media (min-width: 768px) {
+  body {
+    display: flex;
+    justify-content: center;
+  }
+}
