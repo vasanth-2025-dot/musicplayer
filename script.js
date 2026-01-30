@@ -4,7 +4,7 @@ let shuffle = false;
 let repeat = "all";
 
 const audio = document.getElementById("audio");
-const title = document.getElementById("title");
+const title = document.getElementById("name");
 const artist = document.getElementById("artist");
 const cover = document.getElementById("cover");
 const progress = document.getElementById("progress");
@@ -20,7 +20,7 @@ fetch("songs.json")
 
 function loadSong(i) {
   audio.src = songs[i].url;
-  title.textContent = songs[i].title;
+  title.textContent = songs[i].name;
   artist.textContent = songs[i].artist;
   cover.src = songs[i].cover;
   audio.play();
