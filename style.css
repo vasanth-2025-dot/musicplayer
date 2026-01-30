@@ -1,76 +1,96 @@
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
   font-family: Arial, sans-serif;
 }
 
 body {
-  margin: 0;
   background: #121212;
   color: white;
+  height: 100vh;
 }
 
-.player {
-  max-width: 360px;
-  margin: 20px auto;
-  background: #181818;
+.app {
+  display: flex;
+  height: calc(100vh - 90px);
+}
+
+/* Sidebar */
+.sidebar {
+  width: 260px;
+  background: #000;
   padding: 20px;
-  border-radius: 20px;
+  overflow-y: auto;
+}
+
+.sidebar h2 {
+  margin-bottom: 15px;
+  color: #1db954;
+}
+
+#playlist {
+  list-style: none;
+}
+
+#playlist li {
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#playlist li:hover,
+#playlist li.active {
+  background: #1db954;
+  color: black;
+}
+
+/* Main */
+.main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#song-title {
+  font-size: 26px;
   text-align: center;
 }
 
-.player img {
-  width: 100%;
-  border-radius: 16px;
-}
-
-.progress-container {
-  background: #333;
-  height: 6px;
-  border-radius: 10px;
-  margin: 10px 0;
-  cursor: pointer;
-}
-
-#progress {
-  background: #1db954;
-  height: 100%;
-  width: 0%;
-}
-
-.time {
+/* Bottom Player */
+.player-bar {
+  height: 90px;
+  background: #181818;
   display: flex;
-  justify-content: space-between;
-  font-size: 12px;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
-.controls button,
-.extras button {
-  background: #1db954;
+.player-bar button {
+  font-size: 22px;
+  padding: 12px 16px;
   border: none;
   border-radius: 50%;
-  padding: 10px;
-  margin: 5px;
-  font-size: 18px;
-}
-
-.playlist {
-  max-width: 360px;
-  margin: auto;
-}
-
-.song {
-  padding: 10px;
-  border-bottom: 1px solid #333;
   cursor: pointer;
 }
 
-.song:hover {
-  background: #222;
+.player-bar button:hover {
+  background: #1db954;
+  color: black;
 }
 
-@media (min-width: 768px) {
-  body {
-    display: flex;
-    justify-content: center;
+/* Mobile */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100px;
+  }
+
+  #song-title {
+    font-size: 20px;
   }
 }
