@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Spotify Style Player</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="player">
+  <img id="cover" src="" alt="cover">
+
+  <h3 id="title">Loading...</h3>
+  <p id="artist"></p>
+
+  <div class="progress-container" onclick="seek(event)">
+    <div id="progress"></div>
+  </div>
+
+  <div class="time">
+    <span id="current">0:00</span>
+    <span id="duration">0:00</span>
+  </div>
+
+  <div class="controls">
+    <button onclick="prevSong()">⏮</button>
+    <button onclick="togglePlay()">▶ / ⏸</button>
+    <button onclick="nextSong()">⏭</button>
+  </div>
+
+  <div class="extras">
+    <button onclick="toggleShuffle()">🔀</button>
+    <button onclick="toggleRepeat()">🔁</button>
+  </div>
+</div>
+
+<div class="playlist" id="playlist"></div>
+
+<audio id="audio"></audio>
+
+<script src="script.js"></script>
+</body>
+</html>
