@@ -1,5 +1,4 @@
-{
-  "songs": [
+[
     {
       "name": "90.S-Kids-MassTamilan.fm",
       "url": "https://github.com/vasanth-2025-dot/video-storage-/releases/download/v1/90.S-Kids-MassTamilan.fm.mp3"
@@ -1524,5 +1523,5 @@
       "name": "Swagathaanjali-MassTamilan.dev",
       "url": "https://github.com/vasanth-2025-dot/video-storage-/releases/download/v1/Swagathaanjali-MassTamilan.dev.mp3"
     }
-  ]
-}
+]
+
