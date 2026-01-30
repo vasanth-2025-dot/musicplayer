@@ -1,88 +1,54 @@
 let songs = [];
-let index = 0;
-let shuffle = false;
-let repeat = "all";
+let currentIndex = 0;
 
 const audio = document.getElementById("audio");
-const title = document.getElementById("name");
-const artist = document.getElementById("artist");
-const cover = document.getElementById("cover");
-const progress = document.getElementById("progress");
+const songTitle = document.getElementById("song-title");
 const playlist = document.getElementById("playlist");
 
 fetch("songs.json")
   .then(res => res.json())
   .then(data => {
-    songs = data.songs;
-    buildPlaylist();
-    loadSong(index);
+    songs = data;
+    loadSong(0);
+    renderPlaylist();
   });
 
-function loadSong(i) {
-  audio.src = songs[i].url;
-  title.textContent = songs[i].name;
-  artist.textContent = songs[i].artist;
-  cover.src = songs[i].cover;
+function loadSong(index) {
+  currentIndex = index;
+  audio.src = songs[index].url;
+  songTitle.textContent = songs[index].name;
   audio.play();
+  updateActive();
 }
 
 function nextSong() {
-  if (shuffle) {
-    index = Math.floor(Math.random() * songs.length);
-  } else {
-    index = (index + 1) % songs.length;
-  }
-  loadSong(index);
+  currentIndex = (currentIndex + 1) % songs.length;
+  loadSong(currentIndex);
 }
 
 function prevSong() {
-  index = (index - 1 + songs.length) % songs.length;
-  loadSong(index);
+  currentIndex = (currentIndex - 1 + songs.length) % songs.length;
+  loadSong(currentIndex);
 }
 
 function togglePlay() {
   audio.paused ? audio.play() : audio.pause();
 }
 
-function toggleShuffle() {
-  shuffle = !shuffle;
-  alert("Shuffle: " + shuffle);
-}
+audio.addEventListener("ended", nextSong);
 
-function toggleRepeat() {
-  repeat = repeat === "all" ? "one" : "all";
-  alert("Repeat: " + repeat);
-}
-
-audio.addEventListener("ended", () => {
-  if (repeat === "one") {
-    loadSong(index);
-  } else {
-    nextSong();
-  }
-});
-
-audio.addEventListener("timeupdate", () => {
-  progress.style.width =
-    (audio.currentTime / audio.duration) * 100 + "%";
-});
-
-function seek(e) {
-  const width = e.target.clientWidth;
-  audio.currentTime =
-    (e.offsetX / width) * audio.duration;
-}
-
-function buildPlaylist() {
+function renderPlaylist() {
   playlist.innerHTML = "";
-  songs.forEach((s, i) => {
-    const div = document.createElement("div");
-    div.className = "song";
-    div.textContent = s.title + " - " + s.artist;
-    div.onclick = () => {
-      index = i;
-      loadSong(i);
-    };
-    playlist.appendChild(div);
+  songs.forEach((song, index) => {
+    const li = document.createElement("li");
+    li.textContent = song.name;
+    li.onclick = () => loadSong(index);
+    playlist.appendChild(li);
+  });
+}
+
+function updateActive() {
+  document.querySelectorAll("#playlist li").forEach((li, i) => {
+    li.classList.toggle("active", i === currentIndex);
   });
 }
