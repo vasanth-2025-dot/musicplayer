@@ -8,36 +8,26 @@
 </head>
 <body>
 
-<div class="player">
-  <img id="cover" src="" alt="cover">
-
-  <h3 id="title">Loading...</h3>
-  <p id="artist"></p>
-
-  <div class="progress-container" onclick="seek(event)">
-    <div id="progress"></div>
+<div class="app">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>🎵 My Music</h2>
+    <ul id="playlist"></ul>
   </div>
 
-  <div class="time">
-    <span id="current">0:00</span>
-    <span id="duration">0:00</span>
-  </div>
-
-  <div class="controls">
-    <button onclick="prevSong()">⏮</button>
-    <button onclick="togglePlay()">▶ / ⏸</button>
-    <button onclick="nextSong()">⏭</button>
-  </div>
-
-  <div class="extras">
-    <button onclick="toggleShuffle()">🔀</button>
-    <button onclick="toggleRepeat()">🔁</button>
+  <!-- Main -->
+  <div class="main">
+    <h1 id="song-title">Loading...</h1>
   </div>
 </div>
 
-<div class="playlist" id="playlist"></div>
-
-<audio id="audio"></audio>
+<!-- Bottom Player -->
+<div class="player-bar">
+  <button onclick="prevSong()">⏮</button>
+  <button onclick="togglePlay()">▶ / ⏸</button>
+  <button onclick="nextSong()">⏭</button>
+  <audio id="audio"></audio>
+</div>
 
 <script src="script.js"></script>
 </body>
