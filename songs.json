@@ -1,0 +1,22 @@
+{
+  "songs": [
+    {
+      "title": "Monica Song",
+      "artist": "Anirudh",
+      "cover": "https://i.imgur.com/8Km9tLL.jpg",
+      "url": "https://github.com/USERNAME/REPO/releases/download/v1/Monica.mp3"
+    },
+    {
+      "title": "Oorum Blood",
+      "artist": "Sai Abhyankkar",
+      "cover": "https://i.imgur.com/3ZQ3Z2J.jpg",
+      "url": "https://github.com/USERNAME/REPO/releases/download/v1/Oorum.mp3"
+    },
+    {
+      "title": "Vaathi Song",
+      "artist": "GV Prakash",
+      "cover": "https://i.imgur.com/6XgK4QZ.jpg",
+      "url": "https://github.com/USERNAME/REPO/releases/download/v1/Vaathi.mp3"
+    }
+  ]
+}
