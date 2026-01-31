@@ -9,7 +9,6 @@
 <body>
 
 <div class="app">
-  <!-- Full Page Song List -->
   <div class="songs-page">
     <h2>🎵 My Music</h2>
     <ul id="playlist"></ul>
@@ -18,6 +17,16 @@
 
 <!-- Bottom Player -->
 <div class="player-bar">
+
+  <!-- SEEK BAR -->
+  <input
+    type="range"
+    id="seekBar"
+    value="0"
+    min="0"
+    step="1"
+  />
+
   <div class="controls">
     <button onclick="prevSong()">⏮</button>
     <button onclick="togglePlay()">▶ / ⏸</button>
