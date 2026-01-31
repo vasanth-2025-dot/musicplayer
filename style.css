@@ -11,64 +11,85 @@ body {
   height: 100vh;
 }
 
+/* App layout */
 .app {
-  padding-bottom: 90px;
+  height: calc(100vh - 90px);
+  overflow-y: auto;
 }
 
-/* SONG LIST */
-.song-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 15px;
+/* Full page song list */
+.songs-page {
   padding: 20px;
 }
 
-.song {
-  background: #1e1e1e;
-  padding: 15px;
-  border-radius: 10px;
+.songs-page h2 {
+  color: #1db954;
+  margin-bottom: 15px;
+}
+
+#playlist {
+  list-style: none;
+}
+
+#playlist li {
+  padding: 12px;
+  margin-bottom: 6px;
   cursor: pointer;
-  transition: 0.3s;
+  border-radius: 6px;
+  background: #1a1a1a;
 }
 
-.song:hover {
-  background: #2a2a2a;
-}
-
-.song.active {
+#playlist li:hover,
+#playlist li.active {
   background: #1db954;
   color: black;
 }
 
-/* PLAYER BAR */
+/* Bottom Player */
 .player-bar {
+  height: 90px;
+  background: #181818;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
   position: fixed;
   bottom: 0;
   width: 100%;
-  height: 80px;
-  background: #181818;
-  display: grid;
-  grid-template-columns: 1fr 1fr 2fr;
-  align-items: center;
-  padding: 10px 20px;
-  border-top: 1px solid #333;
 }
 
-.controls button {
-  background: none;
+.controls {
+  display: flex;
+  gap: 20px;
+}
+
+.player-bar button {
+  font-size: 20px;
+  padding: 10px 14px;
   border: none;
-  color: white;
-  font-size: 22px;
-  margin: 0 10px;
+  border-radius: 50%;
   cursor: pointer;
 }
 
-.time {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.player-bar button:hover {
+  background: #1db954;
+  color: black;
 }
 
-#progress {
-  flex: 1;
+.time {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.now-playing {
+  font-size: 15px;
+  opacity: 0.9;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .songs-page {
+    padding: 12px;
+  }
 }
