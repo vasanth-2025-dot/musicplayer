@@ -1,54 +1,55 @@
-let songs = [];
-let currentIndex = 0;
-
 const audio = document.getElementById("audio");
-const songTitle = document.getElementById("song-title");
-const playlist = document.getElementById("playlist");
+const progress = document.getElementById("progress");
+const currentTimeEl = document.getElementById("currentTime");
+const durationEl = document.getElementById("duration");
+const currentSongEl = document.getElementById("currentSong");
 
-fetch("songs.json")
-  .then(res => res.json())
-  .then(data => {
-    songs = data;
-    loadSong(0);
-    renderPlaylist();
-  });
+let songs = []; // loaded from songs.json
+let index = 0;
 
-function loadSong(index) {
-  currentIndex = index;
-  audio.src = songs[index].url;
-  songTitle.textContent = songs[index].name;
+function loadSong(i) {
+  index = i;
+  audio.src = songs[i].url;
+  currentSongEl.innerText = songs[i].name;
   audio.play();
-  updateActive();
-}
-
-function nextSong() {
-  currentIndex = (currentIndex + 1) % songs.length;
-  loadSong(currentIndex);
-}
-
-function prevSong() {
-  currentIndex = (currentIndex - 1 + songs.length) % songs.length;
-  loadSong(currentIndex);
+  highlightSong();
 }
 
 function togglePlay() {
   audio.paused ? audio.play() : audio.pause();
 }
 
-audio.addEventListener("ended", nextSong);
-
-function renderPlaylist() {
-  playlist.innerHTML = "";
-  songs.forEach((song, index) => {
-    const li = document.createElement("li");
-    li.textContent = song.name;
-    li.onclick = () => loadSong(index);
-    playlist.appendChild(li);
-  });
+function nextSong() {
+  index = (index + 1) % songs.length;
+  loadSong(index);
 }
 
-function updateActive() {
-  document.querySelectorAll("#playlist li").forEach((li, i) => {
-    li.classList.toggle("active", i === currentIndex);
+function prevSong() {
+  index = (index - 1 + songs.length) % songs.length;
+  loadSong(index);
+}
+
+audio.addEventListener("timeupdate", () => {
+  progress.value = (audio.currentTime / audio.duration) * 100 || 0;
+  currentTimeEl.innerText = format(audio.currentTime);
+  durationEl.innerText = format(audio.duration);
+});
+
+progress.addEventListener("input", () => {
+  audio.currentTime = (progress.value / 100) * audio.duration;
+});
+
+audio.addEventListener("ended", nextSong);
+
+function format(sec) {
+  if (!sec) return "0:00";
+  let m = Math.floor(sec / 60);
+  let s = Math.floor(sec % 60).toString().padStart(2, "0");
+  return `${m}:${s}`;
+}
+
+function highlightSong() {
+  document.querySelectorAll(".song").forEach((s, i) => {
+    s.classList.toggle("active", i === index);
   });
 }
