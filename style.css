@@ -11,13 +11,12 @@ body {
   height: 100vh;
 }
 
-/* App layout */
 .app {
   height: calc(100vh - 90px);
   overflow-y: auto;
 }
 
-/* Full page song list */
+/* Song list */
 .songs-page {
   padding: 20px;
 }
@@ -59,6 +58,24 @@ body {
   width: 100%;
 }
 
+/* SEEK BAR */
+#seekBar {
+  width: 90%;
+  height: 4px;
+  appearance: none;
+  background: #444;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#seekBar::-webkit-slider-thumb {
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #1db954;
+}
+
 .controls {
   display: flex;
   gap: 20px;
@@ -87,7 +104,6 @@ body {
   opacity: 0.9;
 }
 
-/* Mobile */
 @media (max-width: 768px) {
   .songs-page {
     padding: 12px;
