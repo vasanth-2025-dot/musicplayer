@@ -6,32 +6,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
-  <body>
-  <div class="app">
-    <!-- SONG LIST -->
-    <div class="song-list" id="songList"></div>
+<body>
+
+<div class="app">
+  <!-- Full Page Song List -->
+  <div class="songs-page">
+    <h2>🎵 My Music</h2>
+    <ul id="playlist"></ul>
+  </div>
+</div>
+
+<!-- Bottom Player -->
+<div class="player-bar">
+  <div class="controls">
+    <button onclick="prevSong()">⏮</button>
+    <button onclick="togglePlay()">▶ / ⏸</button>
+    <button onclick="nextSong()">⏭</button>
   </div>
 
-  <!-- PLAYER BAR -->
-  <div class="player-bar">
-    <div class="song-info">
-      <div id="currentSong">Select a song</div>
-    </div>
-
-    <div class="controls">
-      <button onclick="prevSong()">⏮</button>
-      <button onclick="togglePlay()">⏯</button>
-      <button onclick="nextSong()">⏭</button>
-    </div>
-
-    <div class="time">
-      <span id="currentTime">0:00</span>
-      <input type="range" id="progress" value="0">
-      <span id="duration">0:00</span>
-    </div>
+  <div class="time">
+    <span id="currentTime">0:00</span>
+    /
+    <span id="duration">0:00</span>
   </div>
+
+  <div class="now-playing" id="song-title">Loading...</div>
 
   <audio id="audio"></audio>
-  <script src="script.js"></script>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
