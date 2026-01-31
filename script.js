@@ -53,3 +53,11 @@ function highlightSong() {
     s.classList.toggle("active", i === index);
   });
 }
+
+songs.forEach((song, i) => {
+  const div = document.createElement("div");
+  div.className = "song";
+  div.innerText = song.name;
+  div.onclick = () => loadSong(i);
+  document.getElementById("songList").appendChild(div);
+});
