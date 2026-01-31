@@ -6,6 +6,7 @@ const songTitle = document.getElementById("song-title");
 const playlist = document.getElementById("playlist");
 const currentTimeEl = document.getElementById("currentTime");
 const durationEl = document.getElementById("duration");
+const seekBar = document.getElementById("seekBar");
 
 fetch("songs.json")
   .then(res => res.json())
@@ -56,10 +57,20 @@ function updateActive() {
   });
 }
 
-/* Time Update */
+/* TIME + SEEK UPDATE */
 audio.addEventListener("timeupdate", () => {
   currentTimeEl.textContent = formatTime(audio.currentTime);
   durationEl.textContent = formatTime(audio.duration);
+
+  if (!isNaN(audio.duration)) {
+    seekBar.max = Math.floor(audio.duration);
+    seekBar.value = Math.floor(audio.currentTime);
+  }
+});
+
+/* SEEK WHEN USER MOVES BAR */
+seekBar.addEventListener("input", () => {
+  audio.currentTime = seekBar.value;
 });
 
 function formatTime(time) {
